@@ -3,22 +3,28 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const { connectToDb } = require("./config/db");
 const { photosRouter } = require("./routes/photosRoute");
+const { userRouter } = require("./routes/userRoute");
+const dotenv = require("dotenv");
 
 //app config
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-
-// parse application/json
-app.use(bodyParser.json());
-//api endpoints
-app.use("/api/photos", photosRouter);
-app.use("/images", express.static("uploads"));
 
 //middleware
 app.use(express.json());
 app.use(cors());
+dotenv.config();
+
+// parse application/json
+app.use(bodyParser.json());
+
+//api endpoints
+app.use("/api/photos", photosRouter);
+app.use("/images", express.static("uploads"));
+app.use("/api/user", userRouter);
 
 app.get("/", (req, res) => {
   res.send("api working");

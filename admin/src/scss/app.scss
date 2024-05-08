@@ -1,0 +1,35 @@
+@import './variables';
+@import './libs/normalize';
+
+@import './components/all';
+
+body {
+    background-color: $creamy;
+}
+
+[class*="__container"] {
+    max-width: 1215px;
+    margin: 0px auto;
+    padding: 0px 15px;
+    /*отступы безопасности*/
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-content {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cursor {
+    cursor: pointer;
+}
