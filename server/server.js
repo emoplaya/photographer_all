@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const { connectToDb } = require("./config/db");
 const { photosRouter } = require("./routes/photosRoute");
 const { userRouter } = require("./routes/userRoute");
+const { cartRouter } = require("./routes/cartRoute");
 const dotenv = require("dotenv");
 
 //app config
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use("/api/photos", photosRouter);
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
 
 app.get("/", (req, res) => {
   res.send("api working");
