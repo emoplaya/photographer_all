@@ -6,6 +6,7 @@ const { photosRouter } = require("./routes/photosRoute");
 const { userRouter } = require("./routes/userRoute");
 const { cartRouter } = require("./routes/cartRoute");
 const dotenv = require("dotenv");
+const { orderRouter } = require("./routes/orderRoute");
 
 //app config
 const app = express();
@@ -27,6 +28,7 @@ app.use("/api/photos", photosRouter);
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
 
 app.get("/", (req, res) => {
   res.send("api working");
