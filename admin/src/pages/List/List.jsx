@@ -30,13 +30,14 @@ const List = ({ url }) => {
   }, []);
   return (
     <div className="list add flex-col">
-      <p>all foods list</p>
+      <p>Список фотографий</p>
       <div className="list-table">
         <div className="list-table-format title">
-          <b>Image</b>
-          <b>Name</b>
-          <b>Price</b>
-          <b>Action</b>
+          <b>Фотография</b>
+          <b>Название</b>
+          <b>Размер</b>
+          <b>Цена</b>
+          <b>Удалить</b>
         </div>
         {list.map((item, index) => {
           return (

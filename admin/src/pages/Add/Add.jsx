@@ -8,7 +8,7 @@ const Add = ({ url }) => {
   const [data, setData] = useState({
     name: "",
     price: "",
-    category: "salad",
+    category: "10x15",
   });
 
   const onChangeHandler = (event) => {
@@ -29,7 +29,7 @@ const Add = ({ url }) => {
       setData({
         name: "",
         price: "",
-        category: "salad",
+        category: "15x20",
       });
       setImage(false);
       toast.success(response.data.message);
@@ -42,7 +42,7 @@ const Add = ({ url }) => {
     <div className="add">
       <form className="flex-col" onSubmit={onSubmitHandler}>
         <div className="add-img-upload flex-col">
-          <p>Upload Image</p>
+          <p>Добавить изображение</p>
           <label htmlFor="image">
             <img src={image ? URL.createObjectURL(image) : Upload} alt="" />
           </label>
@@ -55,42 +55,37 @@ const Add = ({ url }) => {
           />
         </div>
         <div className="add-product-name flex-col">
-          <p>Product name</p>
+          <p>Название</p>
           <input
             onChange={onChangeHandler}
             value={data.name}
             type="text"
             name="name"
-            placeholder="type here"
+            placeholder="напишите здесь"
           />
         </div>
         <div className="add-category-price">
           <div className="add-category flex-col">
-            <p>Product category</p>
+            <p>Категория</p>
             <select onChange={onChangeHandler} name="category">
-              <option value="salad">salad</option>
-              <option value="rolls">rolls</option>
-              <option value="desert">desert</option>
-              <option value="sandwich">sandwich</option>
-              <option value="cake">cake</option>
-              <option value="pure veg">pure veg</option>
-              <option value="pasta">pasta</option>
-              <option value="noodles">noodles</option>
+              <option value="10x15">10x15</option>
+              <option value="15x20">15x20</option>
+              <option value="20x30">20x30</option>
             </select>
           </div>
           <div className="add-price flex-col">
-            <p>Product price</p>
+            <p>Цена</p>
             <input
               onChange={onChangeHandler}
               value={data.price}
               type="Number"
               name="price"
-              placeholder="200rub"
+              placeholder="200 ₽"
             />
           </div>
         </div>
         <button type="submit" className="add-btn">
-          Add
+          Добавить
         </button>
       </form>
     </div>

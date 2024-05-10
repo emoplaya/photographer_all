@@ -43,3 +43,26 @@
     color: white;
     cursor: pointer;
 }
+
+.add-btn {
+    background-color: $brown;
+    padding: 20px 40px;
+    color: white;
+    font-size: 12px;
+    font-family: 'Ubuntu';
+    letter-spacing: 2px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: fit-content;
+    height: 50px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+
+.add-btn:hover {
+    background-color: rgba($brown, 0.6);
+}
