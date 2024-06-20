@@ -15,7 +15,17 @@ const Orders = ({ url }) => {
       toast.error("Error");
     }
   };
-
+  const removeOrders = async (orderId) => {
+    const response = await axios.post(url + "/api/order/remove", {
+      id: orderId,
+    });
+    await fetchAllOrders();
+    if (response.data.success) {
+      toast.success(response.data.message);
+    } else {
+      toast.error("Error");
+    }
+  };
   const statusHandler = async (event, orderId) => {
     const response = await axios.post(url + "/api/order/status", {
       orderId,
@@ -35,7 +45,6 @@ const Orders = ({ url }) => {
       <div className="order-list">
         {orders.map((order, index) => (
           <div key={index} className="order-item">
-            <img src="" alt="" />
             <div>
               <p className="order-item-photos">
                 {order.items.map((item, index) => {
@@ -62,6 +71,9 @@ const Orders = ({ url }) => {
               <option value="Обрабатывается">Обрабатывается</option>
               <option value="Доставлен">Доставлен</option>
             </select>
+            <div className="button" onClick={() => removeOrders(order._id)}>
+              Удалить
+            </div>
           </div>
         ))}
       </div>

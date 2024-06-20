@@ -8,6 +8,8 @@ import List from "./pages/List/List";
 import Orders from "./pages/Orders/Orders";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AddUser from "./pages/AddUsers/AddUsers";
+import UsersList from "./pages/usersList/usersList";
 
 function App() {
   const url = "http://localhost:5000";
@@ -22,6 +24,8 @@ function App() {
           <Route path="/add" element={<Add url={url} />} />
           <Route path="/list" element={<List url={url} />} />
           <Route path="/orders" element={<Orders url={url} />} />
+          <Route path="/adduser" element={<AddUser url={url} />} />
+          <Route path="/userlist" element={<UsersList url={url} />} />
         </Routes>
       </div>
     </div>

@@ -48,7 +48,6 @@ const registerUser = async (req, res) => {
         message: "Please enter a strong password",
       });
     }
-
     //hashing user password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -67,8 +66,34 @@ const registerUser = async (req, res) => {
     res.json({ success: false, message: "Error" });
   }
 };
+const listUsers = async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    res.json({ success: true, data: users });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+};
+const removeUser = async (req, res) => {
+  try {
+    // Проверка наличия пользователя с указанным ID
+    const users = await userModel.findById(req.body.id);
 
+    // Удаление пользователя
+    await userModel.findByIdAndDelete(req.body.id);
+    res.json({ success: true, message: "Пользователь успешно удален" });
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success: false,
+      message: "Ошибка при удалении пользователя",
+    });
+  }
+};
 module.exports = {
   loginUser,
   registerUser,
+  listUsers,
+  removeUser,
 };

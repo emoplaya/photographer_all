@@ -83,6 +83,21 @@ const listOrders = async (req, res) => {
   }
 };
 
+//remove photos item
+
+const removeOrders = async (req, res) => {
+  try {
+    // Проверка наличия заказа с указанным ID
+    const order = await orderModel.findById(req.body.id);
+
+    // Удаление заказа
+    await orderModel.findByIdAndDelete(req.body.id);
+    res.json({ success: true, message: "Заказ успешно удален" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Ошибка при удалении заказа" });
+  }
+};
 //api for updating order status
 const updateStatus = async (req, res) => {
   try {
@@ -102,4 +117,5 @@ module.exports = {
   userOrders,
   listOrders,
   updateStatus,
+  removeOrders,
 };
